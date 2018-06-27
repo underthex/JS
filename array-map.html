@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ARRAY-map</title>
+    <script>
+        let animals = [
+            { name: 'Fluffykins', species: 'rabbit' },
+            { name: 'Caro',       species: 'dog' },
+            { name: 'Hamilton',   species: 'dog' },
+            { name: 'Harold',     species: 'fish' },
+            { name: 'Ursula',     species: 'cat' },
+            { name: 'Arfy',     species: 'dog' },
+            { name: 'Jimmy',      species: 'dog' }
+        ];
+
+        //filter your requirements/parameters
+        //map will automatically create a new array
+        //you are free to alter the value of new array
+
+        let names = animals.filter(animal => animal.species === 'dog')
+                           .map(animal => animal.name +' is a ' + animal.species)
+                           .sort();
+
+        console.log(names);
+
+        //iterate through each animal
+        for(let i in names){
+            console.log(names[i]);
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

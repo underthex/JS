@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CLOSURE</title>
+    <script>
+        let Car = function (make) {
+            return function (model){
+                 return 'your car is a ' + make + ' ' + model;
+            }
+        };
+
+        let toyota = Car('toyota');
+        let honda = Car('honda');
+
+        console.log(toyota('supra'));
+        console.log(honda('accord'));
+    </script>
+</head>
+<body>
+
+</body>
+</html>

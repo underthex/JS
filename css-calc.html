@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Calc Function</title>
+    <style>
+        .boxOuter{
+            width: 500px;
+            height: 300px;
+            position:absolute;
+            left: Calc(50% - 250px);
+            top: Calc(50% - 150px);
+            background-color: red;
+        }
+        .boxInner{
+            width: 400px;
+            height: 250px;
+            background-color: blue;
+            position: absolute;
+            left: Calc(50% - 200px);
+            top: Calc(50% - 125px);
+        }
+        .boxInner2{
+            width: 200px;
+            height: 100px;
+            background-color: yellow;
+            position: absolute;
+            left: Calc(50% - 100px);
+            top: Calc(50% - 50px);
+            text-align: center;
+            display: table;
+        }
+        .boxInner2 .text{
+            display: table-cell;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+<div class="boxOuter">
+    <div class="boxInner">
+        <div class="boxInner2">
+            <div class="text">
+                <p>Hello there! How are you doing today?</p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

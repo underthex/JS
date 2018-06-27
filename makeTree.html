@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tree View</title>
+    <script>
+
+        let categories = [
+            {id: 'animals', 'parent': null},
+            {id: 'dogs', 'parent': 'animals'},
+            {id: 'poodle', 'parent': 'dogs'},
+            {id: 'cats', 'parent': 'animals'},
+            {id: 'tabby', 'parent': 'cats'},
+            {id: 'siamese', 'parent': 'cats'},
+            {id: 'labrador', 'parent': 'dogs'},
+            {id: 'hound', 'parent': 'dogs'},
+            {id: 'plants', 'parent': null},
+            {id: 'trees', 'parent': 'plants'},
+            {id: 'fig', 'parent': 'trees'},
+            {id: 'birds', 'parent': 'animals'},
+            {id: 'parrots', 'parent': 'birds'},
+            {id: 'white parrots', 'parent': 'parrots'},
+            {id: 'green parrots', 'parent': 'parrots'},
+            {id: 'male', 'parent': 'green parrots'},
+        ];
+
+        let makeTree = (categories, parent) => {
+            let node = {};
+            categories
+                .filter(c => c.parent === parent)
+                .forEach(c => node[c.id] = makeTree(categories, c.id));
+            return node;
+        };
+
+        console.log(makeTree(categories, null));
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

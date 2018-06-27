@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX - Plain JS</title>
+</head>
+<body>
+    <button id="button">
+        Get Text File
+    </button>
+    <div id="display">
+
+    </div>
+
+    <script>
+        //Create event listener
+        document.getElementById('button').addEventListener('click', loadText);
+
+        function loadText(){
+          //Create XHR Object
+            let xhr = new XMLHttpRequest();
+
+            //OPEN - type, url/file, async
+            xhr.open('GET', 'data-tab.txt', true);
+
+            console.log('readyState: ', xhr.readyState);
+
+            //OPTIONAL - loading state... (ReadyState 3)
+            xhr.onprogress = function(){
+                console.log('readyState: ', xhr.readyState);
+                document.getElementById('display')
+                    .textContent = 'Loading...';
+                };
+
+            //ONLOAD (based on readystate 4)
+            /*
+            xhr.onload = function(){
+              if(this.status === 200){
+                  console.log(this.responseText);
+              }
+            };
+            */
+
+            //ONREADY
+            xhr.onreadystatechange = function(){
+                //console.log('readyState: ', xhr.readyState);
+                if(this.readyState === 4 && this.status === 200){
+                    document.getElementById('display')
+                        .textContent = this.responseText;
+                }
+            }
+
+
+            //Send request
+            xhr.send();
+        }
+
+        /*
+        * ReadyState Values:
+        * 0: Request not initialized
+        * 1: Server connection established
+        * 2: Request received
+        * 3: Processing request
+        * 4: Request finished and response is ready
+        * */
+        /*
+        * HTTP Status:
+        * 200: "OK"
+        * 403: "Forbidden"
+        * 404: "Not Found"
+        * */
+    </script>
+</body>
+</html>

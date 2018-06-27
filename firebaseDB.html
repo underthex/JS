@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Firebase Test Fetch</title>
+    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      const config = {
+        apiKey: "AIzaSyDcLS7WCBD1oE59Q4UBk2RSjkmpABEprrY",
+        authDomain: "tomopiggery.firebaseapp.com",
+        databaseURL: "https://tomopiggery.firebaseio.com",
+        projectId: "tomopiggery",
+        storageBucket: "tomopiggery.appspot.com",
+        messagingSenderId: "325087179358"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+</head>
+<body>
+
+
+<script>
+
+
+
+  let db = firebase.database();
+  let ref = db.ref('Todo');
+    ref.on('value', gotData, errData);
+
+    function gotData(data) {
+      console.log(data);
+    }
+
+    function errData(err) {
+      console.log('error', err);
+    }
+  /*
+  let data = {
+    Name: 'Test from Code',
+    Priority: 2,
+  };
+
+  ref.set(data);*/
+
+</script>
+</body>
+</html>

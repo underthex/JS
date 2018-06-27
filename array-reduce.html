@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ARRAY-reduce</title>
+    <script>
+        let classes = [
+            { subject: 'Calculus', score: 56 },
+            { subject: 'Chemistry', score: 65 },
+            { subject: 'Statistic', score: 70 },
+            { subject: 'Management', score: 65 },
+            { subject: 'Economy', score: 81 },
+            { subject: 'Accounting', score: 92 },
+            { subject: 'Finance', score: 77 }
+        ];
+
+        let totalScore = classes.reduce(function(sum, item){
+            //console.log('- ' + sum, item);
+            return sum + item.score;
+
+            //return test;
+        },0);
+
+        console.log('average score: ' + (totalScore/classes.length));
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
