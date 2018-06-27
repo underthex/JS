@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web API</title>
+</head>
+<body>
+See on console
+
+<hr />
+
+<input type="text" value="Test string to copy" />
+<button>Test Copy</button>
+
+<script>
+  let start = () => {
+
+    //Page Visibility. Do not use onFocus/onBlur
+    window.addEventListener('visibilitychange', () => {
+      switch(document.visibilityState) {
+        case 'prerender':
+          console.log('Tab is pre-rendering');
+          break;
+        case 'hidden':
+          console.log('Tab is hidden');
+          break;
+        case 'visible':
+          console.log('Tab is focused');
+          break
+      }
+    })
+
+    //Online State. Check if you are online/ofline
+    console.log('navigator.onLine', navigator.onLine)
+    //using event listener (disconnect wifi to test)
+    window.addEventListener('offline', networkStatus);
+    window.addEventListener('online', networkStatus);
+    function networkStatus(e) {
+      console.log(e.type);
+    }
+
+    //Vibration API for tactile feedback
+    //to vibrate for 1 sec
+    navigator.vibrate(1000);
+    //to turn off vibration
+    navigator.vibrate(0);
+    //Good use case is for user validation
+
+    //Copy to clipboard
+    let button = document.querySelector('button')
+    button.addEventListener('click', () => {
+      select();
+      copy();
+    })
+    function select() {
+      let input = document.querySelector('input');
+      input.focus();
+      input.setSelectionRange(0, input.value.length)
+    }
+    function copy() {
+      try {
+        document.execCommand('copy');
+      }
+      catch(err) {
+        console.log(err);
+      }
+    }
+
+    //Ambient Light
+    window.addEventListener('devicelight', (e) => {
+      console.log('light value', e.value)
+    })
+
+    //Battery Status
+    navigator.getBattery().then((battery) => {
+        console.log('batt', (battery.level * 100) + '%');
+    })
+
+
+
+    //Device Orientation
+    /*
+    window.addEventListener('deviceorientation', (e) => {
+      console.log('Gamma:', e.gamma);
+      console.log('Beta:', e.beta);
+      console.log('Alpha:', e.alpha);
+    })*/
+
+
+
+
+
+  };
+  start();
+</script>
+</body>
+</html>
